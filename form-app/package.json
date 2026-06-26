@@ -1,16 +1,45 @@
 {
-  "name": "form-app",
+  "name": "formulario-servicos",
   "version": "1.0.0",
-  "description": "",
+  "description": "Formulário de precificação de serviços",
   "main": "main.js",
+  "author": "Pina",
+  "license": "ISC",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "electron-builder --win --x64",
+    "build:all": "electron-builder --win --x64 --ia32"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "build": {
+    "appId": "com.pina.formulario-servicos",
+    "productName": "Formulário de Serviços",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Formulário de Serviços"
+    },
+    "files": [
+      "main.js",
+      "index.html",
+      "assets/**"
+    ]
+  },
   "devDependencies": {
-    "electron": "^42.5.0"
+    "electron": "^42.5.0",
+    "electron-builder": "^26.15.3"
   }
 }
